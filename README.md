@@ -61,7 +61,7 @@ The first eight distributions are supported by the Copulas Library, while custom
 
 2. We considered Gaussian copula, which are widely used and straightforward type of copula model. The Gaussian copula is based on the multivariate normal distribution and uses the probability integral transformation to model dependencies between random variables, given a specific covariance matrix, denoted as $\Sigma$. It is defined as:
 
-The Gaussian copula $C_{\text{Gauss}}^{\Sigma}(u)$ for a given covariance matrix $\Sigma$ is expressed for $u_1,\dots,u_d \in (0,1)^d$ as:
+The Gaussian copula $C_{\text{Gauss}}^{\Sigma}(u)$ for a given covariance matrix $\Sigma$ is expressed for $u_1,\dots,u_d \in (0,1)^d$ as: $`C_{\mathrm{Gauss}}^{\Sigma}(u) = \Phi(\Phi^{-1}(u_1), \ldots, \Phi^{-1}(u_d))`$
 $$
 C_{\mathrm{Gauss}}^{\Sigma}(u) = \Phi(\Phi^{-1}(u_1), \ldots, \Phi^{-1}(u_d))
 $$
