@@ -1,0 +1,5 @@
+# copulas==0.8.0
+matplotlib
+numpy
+pandas
+sklearn
