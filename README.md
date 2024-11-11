@@ -24,9 +24,9 @@ The main algorithm that we used for synthetic data generation is described with 
 * $`p_\theta(x_1, \ldots, x_d): ℝ^{d} \rightarrow ℝ_{+}`$: The estimated probability density function (PDF), which depends on the parameters $\theta$. This function represents the likelihood of observing a data point $(x_1, \ldots, x_d)$ given the parameters $\theta$. The empirical cumulative density function (CDF) associated to each of the variables $x_i$, $i \in \{1,\ldots,d\}$, when using $n$ samples will be denoted as $F_{i}^n$, and their estimations $F_{\theta_i}$. We will also denote the data log-likelihood as $\mathscr{L}(\theta ; \mathscr{D})$ which corresponds to the logarithm of the likelihood of the observations in the dataset when using parameter $\theta$. 
 
 Fiting one-dimensional distributions is generally easy, but capturing a joint distribution is harder. This is where Copulas comes into play by allowing to model dependencies between univariates distributions. This is thanks to Sklar's Theorem (1959): For a a d-dimensional CDF, $F$, with marginals $F_1, \ldots, F_d$. Then there exists a copula, $C$, such that
-\begin{equation}
-F\left(x_1, \ldots, x_d\right)=C\left(F_1\left(x_1\right), \ldots, F_d\left(x_d\right)\right),    
-\end{equation}
+$$
+F(x_1, \ldots, x_d)=C(F_1(x_1), \ldots, F_d(x_d)),    
+$$
 for all $x_i \in[-\infty, \infty]$ and $i=1, \ldots, d$.
 
 To estimate the copula function $C$, the following steps are taken:
@@ -62,6 +62,10 @@ The first eight distributions are supported by the Copulas Library, while custom
 2. We considered Gaussian copula, which are widely used and straightforward type of copula model. The Gaussian copula is based on the multivariate normal distribution and uses the probability integral transformation to model dependencies between random variables, given a specific covariance matrix, denoted as $\Sigma$. It is defined as:
 
 The Gaussian copula $C_{\text{Gauss}}^{\Sigma}(u)$ for a given covariance matrix $\Sigma$ is expressed for $u_1,\dots,u_d \in (0,1)^d$ as:
+$$
+C_{\mathrm{Gauss}}^{\Sigma}(u) = \Phi(\Phi^{-1}(u_1), \ldots, \Phi^{-1}(u_d))
+$$
+
 $$
 C_{\text{Gauss}}^{\Sigma}(u) = \Phi_{\Sigma}(\Phi^{-1}(u_1), \ldots, \Phi^{-1}(u_d))
 $$
