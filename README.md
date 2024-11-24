@@ -16,8 +16,11 @@ The file structure is organized as follows:
 ```
 .
 ├── README.md
+├── report.pdf # Internship report
+├── toy-data-generation.py # Script to generate and test the algorithm with synthetic data
+├── requirements.txt # List of dependencies
 ├── images # Folder with images
-├── copulas
+├── copulas # Folder with Copulas Library modifications
 ```
 
 This work was partly based on the open-sourced python library [Copulas](https://pypi.org/project/copulas/), for which we performed custom modifications detailed hereafter in the folder ```copulas```.
@@ -70,7 +73,7 @@ Parameters for each distribution are estimated using Maximum Likelihood Estimati
 
 # Further analysis with synthetic data
 
-We include in the file `toy_data_generation.py` a script that attempts to reproduce some of the experiments with a toy synthetic dataset. 
+We include in the file `toy_data_generation.py` a script that attempts to reproduce some of the experiments with a toy synthetic dataset. It can be executed by running `python toy_data_generation.py`.
 
 In this synthetic dataset, we considered comparing a GMM with a Gaussian-Copulas. Here, the GMM was fitted with 27 modes, according to the Akaike Information Criterion (AIC).
 

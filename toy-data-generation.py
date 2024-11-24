@@ -23,6 +23,7 @@ def plot_2d_comparison(data, samples_copulas, samples_gmm, x_idx, y_idx, title, 
     plt.title(title)
     plt.savefig(f"{IMAGE_DIR}{filename}")
     plt.show()
+    plt.close()
 
 
 def plot_3d_comparison(data, samples_copulas, samples_gmm, title, filename):
@@ -39,6 +40,7 @@ def plot_3d_comparison(data, samples_copulas, samples_gmm, title, filename):
     plt.title(title)
     plt.savefig(f"{IMAGE_DIR}{filename}")
     plt.show()
+    plt.close()
 
 
 # Main Process
