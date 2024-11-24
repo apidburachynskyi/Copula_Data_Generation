@@ -20,15 +20,3 @@ class LevyUnivariate(ScipyModel):
             'loc': params[0],
             'scale': params[1]
         }
-
-    # def _fit_constant(self, X):
-    #     self._params = {'lambd': 1/np.unique(X)[0]}
-
-    # def _fit(self, X):
-    #     self._params = {'lambd': 1/np.mean(X)}
-
-    # def _is_constant(self):
-        # return self._params['???] == 0
-
-    # def _extract_constant(self):
-        # return self._params['???']

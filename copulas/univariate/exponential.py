@@ -21,9 +21,3 @@ class ExponentialUnivariate(ScipyModel):
             'loc': params[0],
             'scale': params[1]
         }
-
-    # def _is_constant(self):
-        # return self._params['scale'] == 0
-
-    # def _extract_constant(self):
-        # return self._params['???']

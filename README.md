@@ -59,8 +59,27 @@ Is this work:
 * **Exponential Distributions**: Modeling time until an event.
 * **Levy Distributions**: For highly skewed data with heavy tails.
 
-The first eight distributions are supported by the Copulas Library, while custom tests were implemented for the exponential and Levy distributions to broaden the scope of fitting options. Parameters for each distribution are estimated using Maximum Likelihood Estimation (MLE), which maximizes the likelihood of the observed data under the model.
+The first eight distributions are supported by the Copulas Library, while custom tests were implemented for the exponential and Levy distributions to broaden the scope of fitting options:
 
-2. We considered Gaussian copula, which are widely used and straightforward type of copula model. The Gaussian copula is based on the multivariate normal distribution and uses the probability integral transformation to model dependencies between random variables, given a specific covariance matrix, denoted as $\Sigma$. It is defined as:
+* The exponential distribution can be fitted using the `ExponentialUnivariate` class that is implemented in the `copulas/univariate/exponential.py` file.
+* The Levy distribution can be fitted using the `LevyUnivariate` class that is implemented in the `copulas/univariate/levy.py` file.
 
-The Gaussian copula $C_{\text{Gauss}}^{\Sigma}(u)$ for a given covariance matrix $\Sigma$ is expressed for $u_1,\dots,u_d \in (0,1)^d$ as: $`C_{\text{Gauss}}^{\Sigma}(u) = \Phi_{\Sigma}(\Phi^{-1}(u_1), \ldots, \Phi^{-1}(u_d))`$, where $\Phi: s \in ℝ \mapsto \frac{1}{\sqrt{2 \pi}}\int_{- \infty}^{s} \exp(-\frac{t^{2}}{2}) \mathrm{d}t$ represents the cumulative distribution function (CDF) of the standard normal distribution $\mathcal{N}(0,1)$ and $\Phi_{\Sigma}$ is the joint CDF of a multivariate distribution $\mathcal{N}(\mathbf{0}_d,\Sigma)$.
+Parameters for each distribution are estimated using Maximum Likelihood Estimation (MLE), which maximizes the likelihood of the observed data under the model.
+
+2. We considered Gaussian copula, which are widely used and straightforward type of copula model. The Gaussian copula is based on the multivariate normal distribution and uses the probability integral transformation to model dependencies between random variables, given a specific covariance matrix, denoted as $\Sigma$. The Gaussian copula $C_{\text{Gauss}}^{\Sigma}(u)$ for a given covariance matrix $\Sigma$ is expressed for $u_1,\dots,u_d \in (0,1)^d$ as: $`C_{\text{Gauss}}^{\Sigma}(u) = \Phi_{\Sigma}(\Phi^{-1}(u_1), \ldots, \Phi^{-1}(u_d))`$, where $\Phi: s \in ℝ \mapsto \frac{1}{\sqrt{2 \pi}}\int_{- \infty}^{s} \exp(-\frac{t^{2}}{2}) \mathrm{d}t$ represents the cumulative distribution function (CDF) of the standard normal distribution $\mathcal{N}(0,1)$ and $\Phi_{\Sigma}$ is the joint CDF of a multivariate distribution $\mathcal{N}(\mathbf{0}_d,\Sigma)$.
+
+# Further analysis with synthetic data
+
+We include in the file `toy_data_generation.py` a script that attempts to reproduce some of the experiments with a toy synthetic dataset. 
+
+In this synthetic dataset, we considered comparing a GMM with a Gaussian-Copulas. Here, the GMM was fitted with 27 modes, according to the Akaike Information Criterion (AIC).
+
+![2D Comparison of Original Data, Copulas, and GMM, X-Y.](images/2D_Comparison_X-Y.png)
+
+![2D Comparison of Original Data, Copulas, and GMM, X-Z.](images/2D_Comparison_X-Z.png)
+
+![2D Comparison of Original Data, Copulas, and GMM, Y-Z.](images/2D_Comparison_Y-Z.png)
+
+![3D Comparison of Original Data, Copulas, and GMM, X-Y-Z.](images/3D_Comparison_X-Y-Z.png)
+
+The plots above show the 2D and 3D scatter plots of the original data (green), the Copulas-generated data (blue), and the GMM-generated data (orange). In X-Y and X-Z plots, it seems that the Copulas generates a better fit than the GMM, in particular in the upside square boundaries. However, in the Y-Z plot, it seems that the GMM produces a better fit than the Copulas. We believe that this is due to the fact that the Gaussian Copula is not able to capture the dependencies in the tail of the data. This warrants further investigation on the choice of copula; investigating other copulas than the Gaussian one, or even non-parametric copulas could be an interesting avenue of research.
