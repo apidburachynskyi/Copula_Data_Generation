@@ -5,6 +5,13 @@ from copulas.datasets import sample_trivariate_xyz
 from copulas.multivariate import GaussianMultivariate
 from sklearn.mixture import GaussianMixture
 
+# Uncomment below to render in LateX.
+
+# plt.rcParams.update({
+#        "text.usetex": True,
+#        "font.family": "serif",
+#        "font.serif": ["Computer Modern Roman"],
+#    })
 
 # Constants
 IMAGE_DIR = 'images/'
@@ -16,9 +23,9 @@ N_SAMPLES = 1000
 
 def plot_2d_comparison(data, samples_copulas, samples_gmm, x_idx, y_idx, title, filename):
     """Plot and save 2D comparison."""
-    plt.scatter(samples_copulas[:, x_idx], samples_copulas[:, y_idx], label='Copulas')
-    plt.scatter(samples_gmm[:, x_idx], samples_gmm[:, y_idx], label='GMM')
-    plt.scatter(data[:, x_idx], data[:, y_idx], label='Original Data')
+    plt.scatter(samples_copulas[:, x_idx], samples_copulas[:, y_idx], label='Copulas', alpha=0.6)
+    plt.scatter(samples_gmm[:, x_idx], samples_gmm[:, y_idx], label='GMM', alpha=0.6)
+    plt.scatter(data[:, x_idx], data[:, y_idx], label='Original Data', alpha=0.6)
     plt.legend()
     plt.title(title)
     plt.savefig(f"{IMAGE_DIR}{filename}")
